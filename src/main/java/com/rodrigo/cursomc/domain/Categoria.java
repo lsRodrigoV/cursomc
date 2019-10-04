@@ -10,6 +10,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity //Entidade do JPA, JAVA.PERSISTENCE pois é a especificação do JPA. (Ligação com Bando para enviar/receber dados)
 public class Categoria implements Serializable {
 	private static final long serialVersionUID = 1L;
@@ -21,15 +23,14 @@ public class Categoria implements Serializable {
 	private Integer id;
 	private String nome;
 	
+	@JsonManagedReference //Interrompe a associação de objetos, usa este command do lado que voce quer que venhas os objetos associados.
 	@ManyToMany(mappedBy="categorias") //usa o nome do atributo usado no mapeamento
 	private List<Produto> produtos = new ArrayList<>();
-	
 	
 	
 	/* Criando os Construtores da classe */	
 	public Categoria() {	
 	}//Criado um construtor vazio, instancia um objeto sem jogar nada aos atributos.
-	
 	
 	
 	public Categoria(Integer id, String nome) {
@@ -96,9 +97,5 @@ public class Categoria implements Serializable {
 		return true; 
 		
 	}
-
-
-
-
 		
 }
