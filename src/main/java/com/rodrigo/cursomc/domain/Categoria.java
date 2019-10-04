@@ -1,28 +1,34 @@
 package com.rodrigo.cursomc.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 
 @Entity //Entidade do JPA, JAVA.PERSISTENCE pois é a especificação do JPA. (Ligação com Bando para enviar/receber dados)
 public class Categoria implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	
-	/* Declarando atributos Basicos de uma entidade (classe de dominio) */
-	
+	/* Declarando atributos Basicos de uma entidade (classe de dominio) */	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY) //Definindo a estrategia de id do banco (IDENTITY varia dependendo do banco de dados).
 	private Integer id;
 	private String nome;
 	
-	/* Criando os Construtores da classe */
+	@ManyToMany(mappedBy="categorias") //usa o nome do atributo usado no mapeamento
+	private List<Produto> produtos = new ArrayList<>();
 	
+	
+	
+	/* Criando os Construtores da classe */	
 	public Categoria() {	
-	}  //Criado um construtor vazio, instancia um objeto sem jogar nada aos atributos.
+	}//Criado um construtor vazio, instancia um objeto sem jogar nada aos atributos.
 	
 	
 	
@@ -30,39 +36,41 @@ public class Categoria implements Serializable {
 		super();
 		this.id = id;
 		this.nome = nome;
-	}  /* criado um construtor com atributos, para povoa os dados acima com o do
+		
+	}/* criado um construtor com atributos, para povoa os dados acima com o do
 	    *construtor (criado automaticamente atraves do eclipse: "LMB -> SOURCE -> 
 	    *GENERATE CONSTRUCTOR USING FILD..." */
+	
 
 	/* Getters and Setters:
  	 * São gerados atraves do comando: "LMB -> SOURCE -> GENERATE Getters and Setters */
-	
 	public Integer getId() {
 		return id;
 	}
-
-
 
 	public void setId(Integer id) {
 		this.id = id;
 	}
 
-
-
 	public String getNome() {
 		return nome;
 	}
 
-
-
 	public void setNome(String nome) {
 		this.nome = nome;
 	}
-
-
-	/* hashCode e equals
-	 * São gerado atraves do gerador de codigo do eclipse */
 	
+	public List<Produto> getProdutos() {
+		return produtos;
+	}
+
+	public void setProdutos(List<Produto> produtos) {
+		this.produtos = produtos;
+	} 
+	
+		
+	/* hashCode e equals
+	 * São gerado atraves do gerador de codigo do eclipse */	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -87,14 +95,10 @@ public class Categoria implements Serializable {
 			return false;
 		return true; 
 		
-		
-	} 
-	
+	}
 
-	
-	
-	
-	 	
-	
-	
+
+
+
+		
 }
