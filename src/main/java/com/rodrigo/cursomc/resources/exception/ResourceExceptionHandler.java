@@ -1,3 +1,9 @@
+/*
+ *Criação da Classe para resposta de erro. 
+ * 
+ * */
+
+
 package com.rodrigo.cursomc.resources.exception;
 
 import javax.servlet.http.HttpServletRequest;
