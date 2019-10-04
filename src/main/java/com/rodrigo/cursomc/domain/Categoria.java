@@ -2,12 +2,20 @@ package com.rodrigo.cursomc.domain;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+
+@Entity //Entidade do JPA, JAVA.PERSISTENCE pois é a especificação do JPA. (Ligação com Bando para enviar/receber dados)
 public class Categoria implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
 	
 	/* Declarando atributos Basicos de uma entidade (classe de dominio) */
 	
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY) //Definindo a estrategia de id do banco (IDENTITY varia dependendo do banco de dados).
 	private Integer id;
 	private String nome;
 	
