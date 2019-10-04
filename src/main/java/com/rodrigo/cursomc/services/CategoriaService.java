@@ -16,9 +16,9 @@ public class CategoriaService {
 	private CategoriaRepository repo; //Chamando um Objeto que é dependente
 	
 	public Categoria find(Integer id) {
-		Optional<Categoria> obj = repo.findById(id);
-		return obj.orElse(null);
-		
+		Optional<Categoria> obj = repo.findById(id); //Buscando um objeto por ID
+		return obj.orElse(null);					 //Atualmente usando o Optional a partir do sts 2.xx em diante
+													// chamando o findbyid para retornar o optional e mostrar a saida.
 	}
 		
 		
