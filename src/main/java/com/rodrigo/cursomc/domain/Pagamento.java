@@ -14,7 +14,7 @@ import com.rodrigo.cursomc.domain.enums.EstadoPagamento;
 
 
 @Entity
-@Inheritance(strategy=InheritanceType.JOINED)
+@Inheritance(strategy=InheritanceType.JOINED) //usado para herar uma herança (onde se escolhe que tipo de tabela procura para subclasses")
 public abstract class Pagamento implements Serializable { //abstract "nao permite instancia objetos do tipo pagamento, necessario usar as subclasse"
 	private static final long serialVersionUID = 1L;
 	
