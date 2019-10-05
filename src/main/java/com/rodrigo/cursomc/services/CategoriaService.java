@@ -23,5 +23,9 @@ public class CategoriaService {
 			"Objeto não encontrado! Id: " + id + ", Tipo: " + Categoria.class.getName())); // chamando o findbyid para retornar o optional e mostrar a saida.					 
 													
 	}//throw lança uma excessão
-		
+	
+	public Categoria insert(Categoria obj) {
+		obj.setId(null);
+		return repo.save(obj);
+	}
 }

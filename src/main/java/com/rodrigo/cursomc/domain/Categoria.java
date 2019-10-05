@@ -10,8 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-
 @Entity //Entidade do JPA, JAVA.PERSISTENCE pois é a especificação do JPA. (Ligação com Bando para enviar/receber dados)
 public class Categoria implements Serializable {
 	private static final long serialVersionUID = 1L;
