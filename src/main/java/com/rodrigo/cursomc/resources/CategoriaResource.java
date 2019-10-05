@@ -28,7 +28,7 @@ public class CategoriaResource {
 	 										     				GET usado para obter dados, já POST salva um novo 
 	 										     				dado, DELETE deleta assim por diante 
 	 														*/
-	public ResponseEntity<?> find(@PathVariable Integer id) { //metodo de retorna uma lista de categoria
+	public ResponseEntity<Categoria> find(@PathVariable Integer id) { //metodo de retorna uma lista de categoria
 											  				//PathVariable indica que o id deve ser herdado pelo ID do a url.
 		
 		Categoria obj = service.find(id);
@@ -36,12 +36,21 @@ public class CategoriaResource {
 		
 	}
 
-	@RequestMapping(method=RequestMethod.POST)
-	public ResponseEntity<Void> insert(@RequestBody Categoria obj){
+	@RequestMapping(method=RequestMethod.POST) // usado para adicionar via post
+	public ResponseEntity<Void> insert(@RequestBody Categoria obj){ 
 		obj = service.insert(obj);
 		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
 				.path("/{id}").buildAndExpand(obj.getId()).toUri(); // pega a url usada para inserir e acrescenta o novo id criado
 		return ResponseEntity.created(uri).build(); //chama o metodo created para gerar o codigo 201		
+	}
+	
+	@RequestMapping(value="/{id}", method=RequestMethod.PUT) //apresentao value =id, e usa o metodo post para alterar
+	public ResponseEntity<Void> update(@RequestBody Categoria obj, @PathVariable Integer id){ //tem tanto o request body quanto o pathvariable (recebe e envia).
+		obj.setId(id);
+		obj = service.update(obj);
+		return ResponseEntity.noContent().build();
+		
+		
 	}
 
 }

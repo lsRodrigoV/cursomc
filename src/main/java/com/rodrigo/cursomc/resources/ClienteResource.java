@@ -24,7 +24,7 @@ public class ClienteResource {
 	 										     				GET usado para obter dados, já POST salva um novo 
 	 										     				dado, DELETE deleta assim por diante 
 	 														*/
-	public ResponseEntity<?> find(@PathVariable Integer id) { //metodo de retorna uma lista de categoria
+	public ResponseEntity<Cliente> find(@PathVariable Integer id) { //metodo de retorna uma lista de categoria
 											  				//PathVariable indica que o id deve ser herdado pelo ID do a url.
 		
 		Cliente obj = service.find(id);
