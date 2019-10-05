@@ -10,6 +10,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.rodrigo.cursomc.domain.enums.EstadoPagamento;
 
 
@@ -22,6 +23,7 @@ public abstract class Pagamento implements Serializable { //abstract "nao permit
 	private Integer id;
 	private Integer	estado;
 	
+	@JsonBackReference
 	@OneToOne
 	@JoinColumn(name="pedido_id")
 	@MapsId // para garantir que o id do pagamento seja o mesmo do pedido
