@@ -14,6 +14,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.rodrigo.cursomc.domain.enums.TipoCliente;
 
 @Entity
@@ -28,11 +29,12 @@ public class Cliente implements Serializable {
 	private String cpfouCnpj;
 	private Integer tipo;
 	
+	@JsonManagedReference //associançao direcionada nao necessita de protecao apenas quando os 2 lados falam entre si
 	@OneToMany(mappedBy="cliente")
 	private List<Endereco> enderecos = new ArrayList<>();
 	
 	@ElementCollection
-	@CollectionTable(name="TELEFONE")
+	@CollectionTable(name="TELEFONE") // Criado tabela para salvar o telefone pois ele possui apenas um camp string.
 	private Set<String> telefones = new HashSet<>();
 	
 	public Cliente() {
