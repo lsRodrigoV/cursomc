@@ -23,7 +23,6 @@ public class Categoria implements Serializable {
 	private Integer id;
 	private String nome;
 	
-	@JsonManagedReference //Interrompe a associação de objetos, usa este command do lado que voce quer que venhas os objetos associados.
 	@ManyToMany(mappedBy="categorias") //usa o nome do atributo usado no mapeamento
 	private List<Produto> produtos = new ArrayList<>();
 	

@@ -14,7 +14,7 @@ public class PagamentoComBoleto extends Pagamento {
 	
 	@JsonFormat(pattern="dd/mm/yyyy HH:mm")
 	private Date dataVencimento;
-	
+	 
 	@JsonFormat(pattern="dd/mm/yyyy HH:mm")
 	private Date dataPagamento;
 
