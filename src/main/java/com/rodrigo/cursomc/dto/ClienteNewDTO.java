@@ -2,18 +2,41 @@ package com.rodrigo.cursomc.dto;
 
 import java.io.Serializable;
 
+import javax.validation.constraints.Email;
+import javax.validation.constraints.NotEmpty;
+
+import org.hibernate.validator.constraints.Length;
+
+import com.rodrigo.cursomc.services.validation.ClienteInsert;
+
+@ClienteInsert
 public class ClienteNewDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
 	
+	@NotEmpty(message="Preenchimento Obrigatorio")
+	@Length(min=5, max=120, message="O tamanho deve ser entre 5 e 120 caracteres")
 	private String nome;
+	
+	@NotEmpty(message="Preenchimento Obrigatorio")
+	@Email(message="Email invalido")
 	private String email;
-	private String cpfouCnpj;
+	
+	@NotEmpty(message="Preenchimento Obrigatorio")
+	private String cpfOuCnpj;
+	
 	private Integer tipo;
 	
+	@NotEmpty(message="Preenchimento Obrigatorio")
 	private String logradouro;
+	
+	@NotEmpty(message="Preenchimento Obrigatorio")
 	private String numero;
+	
 	private String complemento;
+	
 	private String bairro;
+	
+	@NotEmpty(message="Preenchimento Obrigatorio")
 	private String cep;
 	
 	private String telefone1;
@@ -42,11 +65,11 @@ public class ClienteNewDTO implements Serializable {
 	}
 
 	public String getCpfouCnpj() {
-		return cpfouCnpj;
+		return cpfOuCnpj;
 	}
 
-	public void setCpfouCnpj(String cpfouCnpj) {
-		this.cpfouCnpj = cpfouCnpj;
+	public void setcpfOuCnpj(String cpfOuCnpj) {
+		this.cpfOuCnpj = cpfOuCnpj;
 	}
 
 	public Integer getTipo() {

@@ -27,7 +27,7 @@ public class Cliente implements Serializable {
 	private Integer id;
 	private String nome;
 	private String email;
-	private String cpfouCnpj;
+	private String cpfOuCnpj;
 	private Integer tipo;
 	
 	@OneToMany(mappedBy="cliente", cascade=CascadeType.ALL) //reflete toda a opçao que for usada em cliente "quando deleta, deleta junto"
@@ -49,7 +49,7 @@ public class Cliente implements Serializable {
 		this.id = id;
 		this.nome = nome;
 		this.email = email;
-		this.cpfouCnpj = cpfOuCnpj;
+		this.cpfOuCnpj = cpfOuCnpj;
 		this.tipo = (tipo == null) ? null : tipo.getCod();
 	}
 
@@ -77,12 +77,12 @@ public class Cliente implements Serializable {
 		this.email = email;
 	}
 
-	public String getCpfouCnpj() {
-		return cpfouCnpj;
+	public String getcpfOuCnpj() {
+		return cpfOuCnpj;
 	}
 
-	public void setCpfouCnpj(String cpfouCnpj) {
-		this.cpfouCnpj = cpfouCnpj;
+	public void setcpfOuCnpj(String cpfOuCnpj) {
+		this.cpfOuCnpj = cpfOuCnpj;
 	}
 
 	public TipoCliente getTipo() {
@@ -108,8 +108,6 @@ public class Cliente implements Serializable {
 	public void setEnderecos(List<Endereco> enderecos) {
 		this.enderecos = enderecos;
 	}
-	
-	
 	
 	public List<Pedido> getPedidos() {
 		return pedidos;
