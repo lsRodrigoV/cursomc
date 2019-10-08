@@ -1,5 +1,6 @@
 package com.rodrigo.cursomc.resources;
 
+import java.net.URI;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -14,9 +15,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.rodrigo.cursomc.domain.Cliente;
 import com.rodrigo.cursomc.dto.ClienteDTO;
+import com.rodrigo.cursomc.dto.ClienteNewDTO;
 import com.rodrigo.cursomc.services.ClienteService;
 
 @RestController
@@ -39,6 +42,15 @@ public class ClienteResource {
 		Cliente obj = service.find(id);
 		return ResponseEntity.ok().body(obj);//retorna objeto do tipo responseEntity
 		
+	}
+	
+	@RequestMapping(method=RequestMethod.POST) // usado para adicionar via post
+	public ResponseEntity<Void> insert(@Valid @RequestBody ClienteNewDTO objDto){ 
+		Cliente obj = service.fromDTO(objDto);
+		obj = service.insert(obj);
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+				.path("/{id}").buildAndExpand(obj.getId()).toUri(); // pega a url usada para inserir e acrescenta o novo id criado
+		return ResponseEntity.created(uri).build(); //chama o metodo created para gerar o codigo 201		
 	}
 	
 	@RequestMapping(value="/{id}", method=RequestMethod.PUT) //apresentao value =id, e usa o metodo post para alterar
