@@ -75,7 +75,6 @@ public class CategoriaResource {
 		return ResponseEntity.ok().body(listDto);
 	}
 	
-	
 	@RequestMapping(value="/page", method=RequestMethod.GET) //Parametros para busca por pagina das categorias.
 	public ResponseEntity<Page<CategoriaDTO>> findPage(	
 			@RequestParam(value="page", defaultValue="0") Integer page,

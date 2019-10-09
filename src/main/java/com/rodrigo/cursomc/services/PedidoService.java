@@ -11,8 +11,7 @@ import com.rodrigo.cursomc.services.exception.ObjectNotFoundException;
 
 
 @Service
-public class PedidoService {
-	
+public class PedidoService {	
 	
 	@Autowired //Faz a dependencia ser automaticamente instanciada pelo mecanismo de injeção de dependencia
 	private PedidoRepository repo; //Chamando um Objeto que é dependente
